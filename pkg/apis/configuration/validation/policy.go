@@ -228,6 +228,12 @@ func validateOIDC(oidc *v1.OIDC, fieldPath *field.Path) field.ErrorList {
 	if oidc.TokenEndpoint == "" {
 		return append(allErrs, field.Required(fieldPath.Child("tokenEndpoint"), ""))
 	}
+	if oidc.UserInfoEndpoint == "" {
+		return append(allErrs, field.Required(fieldPath.Child("userInfoEndpoint"), ""))
+	}
+	if oidc.EndSessionEndpoint == "" {
+		return append(allErrs, field.Required(fieldPath.Child("endSessionEndpoint"), ""))
+	}
 	if oidc.JWKSURI == "" {
 		return append(allErrs, field.Required(fieldPath.Child("jwksURI"), ""))
 	}
@@ -252,6 +258,8 @@ func validateOIDC(oidc *v1.OIDC, fieldPath *field.Path) field.ErrorList {
 
 	allErrs = append(allErrs, validateURL(oidc.AuthEndpoint, fieldPath.Child("authEndpoint"))...)
 	allErrs = append(allErrs, validateURL(oidc.TokenEndpoint, fieldPath.Child("tokenEndpoint"))...)
+	allErrs = append(allErrs, validateURL(oidc.UserInfoEndpoint, fieldPath.Child("userInfoEndpoint"))...)
+	allErrs = append(allErrs, validateURL(oidc.EndSessionEndpoint, fieldPath.Child("endSessionEndpoint"))...)
 	allErrs = append(allErrs, validateURL(oidc.JWKSURI, fieldPath.Child("jwksURI"))...)
 	allErrs = append(allErrs, validateSecretName(oidc.ClientSecret, fieldPath.Child("clientSecret"))...)
 	allErrs = append(allErrs, validateClientID(oidc.ClientID, fieldPath.Child("clientID"))...)

@@ -72,11 +72,16 @@ server {
 
     set $oidc_pkce_enable 0;
     set $oidc_logout_redirect "/_logout";
+    set $oidc_logout_redirect_uri "/v2/_logout";
+    set $post_logout_return_uri $redirect_base;
+    set $return_token_to_client_on_login ";
     set $oidc_hmac_key "{{ $s.VSName }}";
     set $zone_sync_leeway {{ $oidc.ZoneSyncLeeway }};
 
     set $oidc_authz_endpoint "{{ $oidc.AuthEndpoint }}";
     set $oidc_token_endpoint "{{ $oidc.TokenEndpoint }}";
+    set $oidc_userinfo_endpoint "{{ $oidc.UserInfoEndpoint }}";
+    set $oidc_end_session_endpoint "{{ $oidc.EndSessionEndpoint }}";
     set $oidc_jwt_keyfile "{{ $oidc.JwksURI }}";
     set $oidc_scopes "{{ $oidc.Scope }}";
     set $oidc_client "{{ $oidc.ClientID }}";

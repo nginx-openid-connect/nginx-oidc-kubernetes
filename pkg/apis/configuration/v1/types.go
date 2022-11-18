@@ -472,14 +472,16 @@ type EgressMTLS struct {
 
 // OIDC defines an Open ID Connect policy.
 type OIDC struct {
-	AuthEndpoint   string `json:"authEndpoint"`
-	TokenEndpoint  string `json:"tokenEndpoint"`
-	JWKSURI        string `json:"jwksURI"`
-	ClientID       string `json:"clientID"`
-	ClientSecret   string `json:"clientSecret"`
-	Scope          string `json:"scope"`
-	RedirectURI    string `json:"redirectURI"`
-	ZoneSyncLeeway *int   `json:"zoneSyncLeeway"`
+	AuthEndpoint       string `json:"authEndpoint"`
+	TokenEndpoint      string `json:"tokenEndpoint"`
+	UserInfoEndpoint   string `json:"userInfoEndpoint"`
+	EndSessionEndpoint string `json:"endSessionEndpoint"`
+	JWKSURI            string `json:"jwksURI"`
+	ClientID           string `json:"clientID"`
+	ClientSecret       string `json:"clientSecret"`
+	Scope              string `json:"scope"`
+	RedirectURI        string `json:"redirectURI"`
+	ZoneSyncLeeway     *int   `json:"zoneSyncLeeway"`
 }
 
 // WAF defines an WAF policy.

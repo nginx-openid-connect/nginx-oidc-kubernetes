@@ -8,5 +8,7 @@ spec:
     clientSecret: oidc-secret
     authEndpoint: https://keycloak.example.com/auth/realms/master/protocol/openid-connect/auth
     tokenEndpoint: http://keycloak.default.svc.cluster.local:8080/auth/realms/master/protocol/openid-connect/token
+    userInfoEndpoint: http://keycloak.default.svc.cluster.local:8080/auth/realms/master/protocol/openid-connect/userinfo
+    endSessionEndpoint: http://keycloak.default.svc.cluster.local:8080/auth/realms/master/protocol/openid-connect/logout
     jwksURI: http://keycloak.default.svc.cluster.local:8080/auth/realms/master/protocol/openid-connect/certs
     scope: openid+profile+email
