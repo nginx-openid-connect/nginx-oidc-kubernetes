@@ -4302,6 +4302,7 @@ func TestGeneratePoliciesFails(t *testing.T) {
 					},
 					Spec: conf_v1.PolicySpec{
 						OIDC: &conf_v1.OIDC{
+<<<<<<< HEAD
 							ClientID:             "foo",
 							ClientSecret:         "oidc-secret",
 							AuthEndpoint:         "https://foo.com/auth",
@@ -4309,6 +4310,14 @@ func TestGeneratePoliciesFails(t *testing.T) {
 							JWKSURI:              "https://foo.com/certs",
 							AccessTokenEnable:    true,
 							InterceptErrorEnable: false,
+=======
+							ClientID:          "foo",
+							ClientSecret:      "oidc-secret",
+							AuthEndpoint:      "https://foo.com/auth",
+							TokenEndpoint:     "https://foo.com/token",
+							JWKSURI:           "https://foo.com/certs",
+							AccessTokenEnable: true,
+>>>>>>> df1257e5 (Add access token support in the OIDC)
 						},
 					},
 				},
@@ -4319,6 +4328,7 @@ func TestGeneratePoliciesFails(t *testing.T) {
 					},
 					Spec: conf_v1.PolicySpec{
 						OIDC: &conf_v1.OIDC{
+<<<<<<< HEAD
 							ClientID:             "foo",
 							ClientSecret:         "oidc-secret",
 							AuthEndpoint:         "https://bar.com/auth",
@@ -4326,6 +4336,14 @@ func TestGeneratePoliciesFails(t *testing.T) {
 							JWKSURI:              "https://bar.com/certs",
 							AccessTokenEnable:    true,
 							InterceptErrorEnable: false,
+=======
+							ClientID:          "foo",
+							ClientSecret:      "oidc-secret",
+							AuthEndpoint:      "https://bar.com/auth",
+							TokenEndpoint:     "https://bar.com/token",
+							JWKSURI:           "https://bar.com/certs",
+							AccessTokenEnable: true,
+>>>>>>> df1257e5 (Add access token support in the OIDC)
 						},
 					},
 				},
@@ -4345,6 +4363,7 @@ func TestGeneratePoliciesFails(t *testing.T) {
 			context: "route",
 			oidcPolCfg: &oidcPolicyCfg{
 				oidc: &version2.OIDC{
+<<<<<<< HEAD
 					AuthEndpoint:         "https://foo.com/auth",
 					TokenEndpoint:        "https://foo.com/token",
 					JwksURI:              "https://foo.com/certs",
@@ -4355,6 +4374,17 @@ func TestGeneratePoliciesFails(t *testing.T) {
 					ZoneSyncLeeway:       0,
 					AccessTokenEnable:    true,
 					InterceptErrorEnable: false,
+=======
+					AuthEndpoint:      "https://foo.com/auth",
+					TokenEndpoint:     "https://foo.com/token",
+					JwksURI:           "https://foo.com/certs",
+					ClientID:          "foo",
+					ClientSecret:      "super_secret_123",
+					RedirectURI:       "/_codexch",
+					Scope:             "openid",
+					ZoneSyncLeeway:    0,
+					AccessTokenEnable: true,
+>>>>>>> df1257e5 (Add access token support in the OIDC)
 				},
 				key: "default/oidc-policy-1",
 			},
@@ -4370,6 +4400,7 @@ func TestGeneratePoliciesFails(t *testing.T) {
 			},
 			expectedOidc: &oidcPolicyCfg{
 				oidc: &version2.OIDC{
+<<<<<<< HEAD
 					AuthEndpoint:         "https://foo.com/auth",
 					TokenEndpoint:        "https://foo.com/token",
 					JwksURI:              "https://foo.com/certs",
@@ -4379,6 +4410,16 @@ func TestGeneratePoliciesFails(t *testing.T) {
 					Scope:                "openid",
 					AccessTokenEnable:    true,
 					InterceptErrorEnable: false,
+=======
+					AuthEndpoint:      "https://foo.com/auth",
+					TokenEndpoint:     "https://foo.com/token",
+					JwksURI:           "https://foo.com/certs",
+					ClientID:          "foo",
+					ClientSecret:      "super_secret_123",
+					RedirectURI:       "/_codexch",
+					Scope:             "openid",
+					AccessTokenEnable: true,
+>>>>>>> df1257e5 (Add access token support in the OIDC)
 				},
 				key: "default/oidc-policy-1",
 			},
@@ -4403,6 +4444,7 @@ func TestGeneratePoliciesFails(t *testing.T) {
 					},
 					Spec: conf_v1.PolicySpec{
 						OIDC: &conf_v1.OIDC{
+<<<<<<< HEAD
 							ClientSecret:         "oidc-secret",
 							AuthEndpoint:         "https://foo.com/auth",
 							TokenEndpoint:        "https://foo.com/token",
@@ -4410,6 +4452,14 @@ func TestGeneratePoliciesFails(t *testing.T) {
 							ClientID:             "foo",
 							AccessTokenEnable:    true,
 							InterceptErrorEnable: false,
+=======
+							ClientSecret:      "oidc-secret",
+							AuthEndpoint:      "https://foo.com/auth",
+							TokenEndpoint:     "https://foo.com/token",
+							JWKSURI:           "https://foo.com/certs",
+							ClientID:          "foo",
+							AccessTokenEnable: true,
+>>>>>>> df1257e5 (Add access token support in the OIDC)
 						},
 					},
 				},
@@ -4420,6 +4470,7 @@ func TestGeneratePoliciesFails(t *testing.T) {
 					},
 					Spec: conf_v1.PolicySpec{
 						OIDC: &conf_v1.OIDC{
+<<<<<<< HEAD
 							ClientSecret:         "oidc-secret",
 							AuthEndpoint:         "https://bar.com/auth",
 							TokenEndpoint:        "https://bar.com/token",
@@ -4427,6 +4478,14 @@ func TestGeneratePoliciesFails(t *testing.T) {
 							ClientID:             "bar",
 							AccessTokenEnable:    true,
 							InterceptErrorEnable: false,
+=======
+							ClientSecret:      "oidc-secret",
+							AuthEndpoint:      "https://bar.com/auth",
+							TokenEndpoint:     "https://bar.com/token",
+							JWKSURI:           "https://bar.com/certs",
+							ClientID:          "bar",
+							AccessTokenEnable: true,
+>>>>>>> df1257e5 (Add access token support in the OIDC)
 						},
 					},
 				},
@@ -4454,6 +4513,7 @@ func TestGeneratePoliciesFails(t *testing.T) {
 			},
 			expectedOidc: &oidcPolicyCfg{
 				&version2.OIDC{
+<<<<<<< HEAD
 					AuthEndpoint:         "https://foo.com/auth",
 					TokenEndpoint:        "https://foo.com/token",
 					JwksURI:              "https://foo.com/certs",
@@ -4464,6 +4524,17 @@ func TestGeneratePoliciesFails(t *testing.T) {
 					ZoneSyncLeeway:       200,
 					AccessTokenEnable:    true,
 					InterceptErrorEnable: false,
+=======
+					AuthEndpoint:      "https://foo.com/auth",
+					TokenEndpoint:     "https://foo.com/token",
+					JwksURI:           "https://foo.com/certs",
+					ClientID:          "foo",
+					ClientSecret:      "super_secret_123",
+					RedirectURI:       "/_codexch",
+					Scope:             "openid",
+					ZoneSyncLeeway:    200,
+					AccessTokenEnable: true,
+>>>>>>> df1257e5 (Add access token support in the OIDC)
 				},
 				"default/oidc-policy",
 			},

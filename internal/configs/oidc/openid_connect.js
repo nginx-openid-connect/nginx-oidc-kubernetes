@@ -101,7 +101,7 @@ function auth(r, afterSyncCheck) {
                             return;
                         }
 
-                        // ID Token is valid, update keyval
+                        // Update ID token and access token in the key-value store
                         r.log("OIDC refresh success, updating id_token for " + r.variables.cookie_auth_token);
                         r.variables.session_jwt = tokenset.id_token;
                         if (tokenset.access_token) {
@@ -265,9 +265,9 @@ function validateIdToken(r) {
 
 function logout(r) {
     r.log("OIDC logout for " + r.variables.cookie_auth_token);
-    r.variables.session_jwt = "-";
-    r.variables.access_token = "-";
-    r.variables.refresh_token = "-";
+    r.variables.session_jwt   = "-";
+    r.variables.access_token  = "-";
+    r.variables.refresh_token = "-";    
     r.return(302, r.variables.oidc_logout_redirect);
 }
 
