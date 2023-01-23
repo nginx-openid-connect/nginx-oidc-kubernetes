@@ -11,6 +11,9 @@ spec:
     targetPort: 8080
   selector:
     app: keycloak
+  externalIPs:
+  - 192.168.1.13
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -33,7 +36,7 @@ spec:
       - name: keycloak
         image: quay.io/keycloak/keycloak:15.0.2
         env:
-         - name: KEYCLOAK_USER
+        - name: KEYCLOAK_USER
           value: "admin"
         - name: KEYCLOAK_PASSWORD
           value: "admin"

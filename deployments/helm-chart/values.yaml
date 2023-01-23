@@ -52,7 +52,7 @@ controller:
 
   image:
     ## The image repository of the Ingress Controller.
-    repository: nginx/nginx-ingress
+    repository: hankim3/nginx-plus-ingress
 
     ## The tag of the Ingress Controller image.
     tag: "3.0.0"
@@ -214,7 +214,7 @@ controller:
   enablePreviewPolicies: false
 
   ## Enable OIDC policies.
-  enableOIDC: false
+  enableOIDC: true
 
   ## Include year in log header. This parameter will be removed in release 2.7 and the year will be included by default.
   includeYear: false
@@ -282,7 +282,7 @@ controller:
     loadBalancerIP: ""
 
     ## The list of external IPs for the Ingress Controller service.
-    externalIPs: []
+    externalIPs: ["192.168.1.13"]
 
     ## The IP ranges (CIDR) that are allowed to access the load balancer. Requires controller.service.type set to LoadBalancer. The cloud provider must support this feature.
     loadBalancerSourceRanges: []

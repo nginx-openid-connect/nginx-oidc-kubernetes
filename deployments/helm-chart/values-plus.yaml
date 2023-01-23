@@ -1,5 +1,5 @@
 controller:
   nginxplus: true
   image:
-    repository: nginx-plus-ingress
-    tag: "3.0.0"
+    repository: hankim3/nginx-plus-ingress
+    tag: "edge"
