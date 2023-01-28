@@ -121,6 +121,7 @@ type OIDC struct {
 	ZoneSyncLeeway    int
 	AuthExtraArgs     string
 	AccessTokenEnable bool
+	UserInfoEndpoint  string
 }
 
 // WAF defines WAF configuration.

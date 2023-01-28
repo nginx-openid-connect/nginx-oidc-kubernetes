@@ -270,12 +270,16 @@ func validateOIDC(oidc *v1.OIDC, fieldPath *field.Path) field.ErrorList {
 	if oidc.AuthExtraArgs != nil {
 		allErrs = append(allErrs, validateQueryString(strings.Join(oidc.AuthExtraArgs, "&"), fieldPath.Child("authExtraArgs"))...)
 	}
+	if oidc.UserInfoEndpoint == "" {
+		return append(allErrs, field.Required(fieldPath.Child("userInfoEndpoint"), ""))
+	}
 
 	allErrs = append(allErrs, validateURL(oidc.AuthEndpoint, fieldPath.Child("authEndpoint"))...)
 	allErrs = append(allErrs, validateURL(oidc.TokenEndpoint, fieldPath.Child("tokenEndpoint"))...)
 	allErrs = append(allErrs, validateURL(oidc.JWKSURI, fieldPath.Child("jwksURI"))...)
 	allErrs = append(allErrs, validateSecretName(oidc.ClientSecret, fieldPath.Child("clientSecret"))...)
 	allErrs = append(allErrs, validateClientID(oidc.ClientID, fieldPath.Child("clientID"))...)
+	allErrs = append(allErrs, validateURL(oidc.UserInfoEndpoint, fieldPath.Child("userInfoEndpoint"))...)
 
 	return allErrs
 }

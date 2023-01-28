@@ -485,6 +485,7 @@ type OIDC struct {
 	ZoneSyncLeeway    *int     `json:"zoneSyncLeeway"`
 	AuthExtraArgs     []string `json:"authExtraArgs"`
 	AccessTokenEnable bool     `json:"accessTokenEnable"`
+	UserInfoEndpoint  string   `json:"userInfoEndpoint"`
 }
 
 // WAF defines an WAF policy.

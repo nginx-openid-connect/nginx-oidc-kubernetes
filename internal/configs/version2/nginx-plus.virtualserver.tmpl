@@ -89,6 +89,7 @@ server {
     set $oidc_authz_extra_args "{{ $oidc.AuthExtraArgs }}";
     set $oidc_token_endpoint "{{ $oidc.TokenEndpoint }}";
     set $oidc_jwt_keyfile "{{ $oidc.JwksURI }}";
+    set $oidc_userinfo_endpoint "{{ $oidc.UserInfoEndpoint }}";
     set $oidc_scopes "{{ $oidc.Scope }}";
     set $oidc_client "{{ $oidc.ClientID }}";
     set $oidc_client_secret "{{ $oidc.ClientSecret }}";
@@ -421,10 +422,11 @@ server {
         error_page 401 = @do_oidc_flow;
         auth_jwt_key_request /_jwks_uri;
         {{ $proxyOrGRPC }}_set_header username $jwt_claim_sub;
-            {{ if .AccessTokenEnable }}
+        {{ end }}
+
+        {{ if $s.OIDC.AccessTokenEnable }}
         {{ $proxyOrGRPC }}_set_header Authorization "Bearer $access_token";
         {{ $proxyOrGRPC }}_intercept_errors on;
-            {{ end }}
         {{ end }}
 
         {{ with $l.WAF }}
