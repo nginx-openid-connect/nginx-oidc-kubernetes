@@ -427,10 +427,13 @@ server {
         error_page 401 = @do_oidc_flow;
         auth_jwt_key_request /_jwks_uri;
         {{ $proxyOrGRPC }}_set_header username $jwt_claim_sub;
-            {{ if .AccessTokenEnable }}
+        {{ end }}
+
+        {{ with $oidc := $s.OIDC }}
+            {{ if $oidc.AccessTokenEnable }}
         {{ $proxyOrGRPC }}_set_header Authorization "Bearer $access_token";
             {{ end }}
-            {{ if .InterceptErrorEnable }}
+            {{ if $oidc.InterceptErrorEnable }}
         {{ $proxyOrGRPC }}_intercept_errors on;
             {{ end }}
         {{ end }}

@@ -1,0 +1,14 @@
+apiVersion: k8s.nginx.org/v1
+kind: Policy
+metadata:
+  name: oidc-policy
+spec:
+  oidc:
+    clientID: 0oa84ngsk5bCBEO7s5d7
+    clientSecret: oidc-secret
+    authEndpoint: https://dev-9590480.okta.com/oauth2/default/v1/authorize
+    tokenEndpoint: https://dev-9590480.okta.com/oauth2/default/v1/token
+    jwksURI: https://dev-9590480.okta.com/oauth2/default/v1/keys
+    scope: openid+profile+email
+    accessTokenEnable: true
+    interceptErrorEnable: true
