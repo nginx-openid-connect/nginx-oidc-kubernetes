@@ -422,16 +422,17 @@ server {
         {{ $proxyOrGRPC }}_ssl_name {{ .SSLName }};
         {{ end }}
 
-        {{ if $l.OIDC }}
+        {{ with $l.OIDC }}
         auth_jwt "" token=$session_jwt;
         error_page 401 = @do_oidc_flow;
         auth_jwt_key_request /_jwks_uri;
         {{ $proxyOrGRPC }}_set_header username $jwt_claim_sub;
-        {{ end }}
-
-        {{ if $s.OIDC.AccessTokenEnable }}
+            {{ if .AccessTokenEnable }}
         {{ $proxyOrGRPC }}_set_header Authorization "Bearer $access_token";
+            {{ end }}
+            {{ if .InterceptErrorEnable }}
         {{ $proxyOrGRPC }}_intercept_errors on;
+            {{ end }}
         {{ end }}
 
         {{ with $l.WAF }}
